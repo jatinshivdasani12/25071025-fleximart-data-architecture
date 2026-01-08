@@ -1,0 +1,77 @@
+DATA QUALITY REPORT
+===================
+
+This report documents data quality checks, issues identified, cleansing actions,
+and final load results for the Fleximart ETL pipeline.
+
+
+File: customers_raw.csv
+-----------------------
+Total records received: 25
+
+Data quality issues identified:
+- Duplicate customer record (C001)
+- Missing email values
+- Inconsistent phone number formats
+- Multiple date formats in registration_date
+
+Data cleansing actions:
+- Duplicate records removed: 1
+- Records with missing email dropped: 5
+- Phone numbers standardized to +91 format
+- registration_date normalized using coercive parsing
+
+Records successfully loaded into customers table: 19
+
+
+File: products_raw.csv
+----------------------
+Total records received: 20
+
+Data quality issues identified:
+- Missing price values
+- Missing stock_quantity values
+- Inconsistent category casing
+
+Data cleansing actions:
+- Duplicate records removed: 0
+- Records with missing price dropped: 3
+- Records with missing stock_quantity retained as NULL
+- Category values retained without normalization
+
+Records successfully loaded into products table: 17
+
+
+File: sales_raw.csv
+------------------
+Total records received: 40
+
+Data quality issues identified:
+- Duplicate transaction record (T001)
+- Missing customer_id values
+- Missing product_id values
+- Multiple date formats in transaction_date
+- Foreign key dependency on customers and products tables
+
+Data cleansing actions:
+- Duplicate records removed: 1
+- Records with missing customer_id dropped: 3
+- Records with missing product_id dropped: 2
+- transaction_date normalized using coercive parsing
+- Only valid foreign key references retained
+
+Records successfully loaded:
+- Valid transactions after cleansing: 34
+- Orders inserted into orders table: 34
+- Order items inserted into order_items table: 34
+
+
+Overall Summary
+---------------
+- All three source files were processed successfully
+- Data quality issues were addressed using defined transformation rules
+- Referential integrity was enforced across customers, products, orders,
+  and order_items tables
+- Invalid records were excluded to prevent database constraint violations
+
+ETL execution status: SUCCESS
