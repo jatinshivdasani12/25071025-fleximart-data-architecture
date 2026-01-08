@@ -1,5 +1,15 @@
 # Part 1: Database ETL Pipeline
 
-This section implements an ETL pipeline for FlexiMart transactional data.
-Raw CSV files are extracted, cleaned, and loaded into a MySQL database.
-It also includes business queries and a data quality report.
+## Overview
+This part implements an ETL pipeline for the FlexiMart transactional database.
+Raw customer, product, and sales data are extracted from CSV files, cleaned,
+validated, and loaded into a relational database.
+
+## Key Components
+- `etl_pipeline.py`: Python ETL script
+- `schema_documentation.md`: Database schema explanation
+- `business_queries.sql`: Business intelligence queries
+- `data_quality_report.txt`: Data quality checks and issues
+
+## Outcome
+A clean, structured relational database ready for analytical querying.
